@@ -163,16 +163,45 @@
 
 // Working with Readable and Writable Streams and Pipe Chains
 
-const fs = require('fs');
-//zlib is for compressing files
-const zlib = require('zlib');
-const gunzip = zlib.createGunzip();
-const readStream = fs.createReadStream('./example2.txt.gz');
-const writeStream = fs.createWriteStream('uncompressed.txt');
+// const fs = require('fs');
+// //zlib is for compressing files
+// const zlib = require('zlib');
+// const gunzip = zlib.createGunzip();
+// const readStream = fs.createReadStream('./example2.txt.gz');
+// const writeStream = fs.createWriteStream('uncompressed.txt');
 
-readStream.pipe(gunzip).pipe(writeStream);
+// readStream.pipe(gunzip).pipe(writeStream);
 
 
 
 
 //Creating a Http Server Using the Http Module
+
+// const http = require('http');
+// const server = http.createServer((req, res)=> {
+//     if(req.url === '/') {
+//         res.write("What's up")
+//         res.end();
+//     } else {
+//         res.write('using some other domain');
+//         res.end();
+//     }
+// });
+
+// server.listen('5000');
+
+
+
+
+// Serving Static Files with Http and File Stystem Modules
+
+const http = require('http');
+const fs = require('fs');
+
+http.createServer((req, res)=> {
+    const readStream = fs.createReadStream('./static/index.html');
+    res.writeHead(200, {'Content-type': 'text/html'});
+    readStream.pipe(res);
+}).listen(3000);
+
+
