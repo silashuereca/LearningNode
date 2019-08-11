@@ -87,22 +87,92 @@
 
 // Working with the File System Module
 
-const fs = require('fs');
+// const fs = require('fs');
 
-// create file 
-fs.writeFile('example.txt', "this is an example", (err) => {
-    if(err)
-        console.log(err)
-     else {
-        console.log('File successfully created')
-        fs.readFile('example.txt','utf8', (err, file) => {
-            if(err) {
-                console.log(err);
-            } else {
-                console.log(file)
-            }
-        })
-     }
+// // create file 
+// fs.writeFile('example.txt', "this is an example", (err) => {
+//     if(err)
+//         console.log(err)
+//      else {
+//         console.log('File successfully created')
+//         fs.readFile('example.txt','utf8', (err, file) => {
+//             if(err) {
+//                 console.log(err);
+//             } else {
+//                 console.log(file)
+//             }
+//         })
+//      }
        
     
-});
+// });
+
+// fs.rename('example.txt', 'example2.txt', (err)=> {
+//     if(err) console.log(err)
+//     else console.log('successfully renamed the file')
+// });
+
+// fs.appendFile('example2.txt', 'Some data being appended', (err)=> {
+//     if(err) console.log(err)
+//     else console.log('Successfully appended data to file')
+// });
+
+// fs.unlink('tutorial.js', (err)=> {
+//     if(err) console.log(err)
+//     else console.log('deleted')
+// })
+
+//Working with folders
+
+// fs.mkdir('tutorial', (err) => {
+//     if(err){
+//         console.log(err)
+//     } else {
+//         fs.writeFile('./tutorial/example.txt', '123', (err)=> {
+//             if(err) console.log(err);
+//             else console.log('succesful');
+//         })
+//     }
+// })
+
+
+// fs.unlink('./tutorial/example.txt', (err)=> {
+//     if(err) console.log(err);
+//     else console.log('successfully deleted file')
+// })
+// fs.rmdir('tutorial', (err)=> {
+//     if(err) console.log(err)
+//     else console.log('deleted folder')
+// })
+
+// fs.readdir('example', (err, files)=> {
+//     if(err) {
+//         console.log(err)
+//     } else {
+//         for(let file of files) {
+//             fs.unlink('./example/' + file, (err)=> {
+//                 if(err){console.log(err)}
+//                 else{ console.log('successfully deleted file')}
+//             })
+//         }
+//     }
+// });
+
+
+
+
+// Working with Readable and Writable Streams and Pipe Chains
+
+const fs = require('fs');
+//zlib is for compressing files
+const zlib = require('zlib');
+const gunzip = zlib.createGunzip();
+const readStream = fs.createReadStream('./example2.txt.gz');
+const writeStream = fs.createWriteStream('uncompressed.txt');
+
+readStream.pipe(gunzip).pipe(writeStream);
+
+
+
+
+//Creating a Http Server Using the Http Module
