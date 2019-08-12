@@ -195,13 +195,25 @@
 
 // Serving Static Files with Http and File Stystem Modules
 
-const http = require('http');
-const fs = require('fs');
+// const http = require('http');
+// const fs = require('fs');
 
-http.createServer((req, res)=> {
-    const readStream = fs.createReadStream('./static/index.html');
-    res.writeHead(200, {'Content-type': 'text/html'});
-    readStream.pipe(res);
-}).listen(3000);
+// http.createServer((req, res)=> {
+//     const readStream = fs.createReadStream('./static/index.html');
+//     res.writeHead(200, {'Content-type': 'text/html'});
+//     readStream.pipe(res);
+// }).listen(3000);
+
+
+
+
+// Create package.json Using npm init 
+// run npm init then fill in the necessary values
+
+
+
+// Installing Packages Using npm
+// can go to npmjs.com to view different pachages and install them using npm install lodash or whichever package you choose to download in your working invironment
+
 
 
